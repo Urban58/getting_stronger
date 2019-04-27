@@ -71,26 +71,7 @@
       margin: 10 px auto;
       border: 2px solid #d3d3d3
     }
-    #photos1 {
-      width: 100%;
-      height: 500px;
-      margin: 10px 0;
-    }
-    #photos2 {
-      width: 100%;
-      height: 500px;
-      margin: 10px 0;
-    }
-    #caption1 {
-      margin: 0 0 20px 0;
-      display: block;
-      font-family: 'Nunito', Sans-Serif;
-    }
-    #caption2 {
-      margin: 0 0 20px 0;
-      display: block;
-      font-family: 'Nunito', Sans-Serif;
-    }
+
     .img-fill {
       width: 100%;
       height: auto;
@@ -152,38 +133,11 @@
         </p>
 
         <h3>Places to Visit</h3>
-        <ul>
-          <li><b>Butchart Gardens:</b> Located just outside of Victoria, Butchart Gardens
-            have been entertaining visitors for over 100 years. Comprised of 55 acres of gardens with 900 bedding plant varieties, the Gardens
-            offer visitors different varieties of blooming plants and the resulting vivid colors that change depending on the season. The oldest
-            section of the Gardens is the Sunken Garden which was started in a former limestone quarry by the Butchart family who owned the mine.
-            During the day you could see the colors of the flowers while during summer evenings you could see the illuminated plants. For children,
-            there is the hand-carved Rose Carousel in the Childrens Pavillion. There are also events held at the Gardens. During the summer,
-            symphony orchestras, rock bands and global acts perform at the Gardens. <a href="https://www.butchartgardens.com/">Visit Website</a></li>
 
-          <li><b>Inner Harbour:</b> The Inner Harbour is part of the Victoria Harbour - one of the most beautiful harbors in the world. Small cruise
-            ships as well as recreation vessels can moor in the Inner Harbour and visitors can disembark and visit the center of Victoria which is just steps away.
-            During the summer, festivals, shows and music performances are held at the Inner Harbour. The Inner Harbour is the home of whale watching and
-            ecotourism businesses and is also the home of the International Ferry Terminal with ferry connections to Port Angeles, Bellingham and Seattle.
-            <a href="https://www.tourismvictoria.com/see-do/activities-attractions/statues-landmarks/inner-harbour">Visit Website</a></li>
-
-          <li><b>Craigdarroch Castle: <i>(To see picture, click on Butchart Gardens picture)</i> </b> The former family home of coal baron Robert Dunsmuir,
-            the wealthiest and most influential man in British Columbia during the 1890’s, Craigdarroch Castle is four floors of beautiful stained glass windows,
-            woodwork and Victorian era furnishings. Built between 1887 and 1890 on a hill, the mansion overlooks the City of Victoria. When visiting the Castle,
-            you can climb 87 stairs to a tower that has great views of Victoria and the surrounding landscape. <a href="https://thecastle.ca/">Visit Website</a></li>
-
-          <li><b>Royal BC Museum: <i>(To see picture, click on Inner Harbour picture)</i> </b> Founded in 1886 and voted the best museum in Canada five times by Trip Advisor users,
-            the Royal BC Museum is a world-class museum of natural and human history. Among the natural history galleries you can see a wooly mammoth in its natural surroundings while
-            among the human history galleries you can see totems, masks and other cultural treasures at the First Peoples Gallery In addition to its permanent exhibits, the Museum also
-            has touring exhibits which recently included HMS Titanic artifacts and Egyptian artifacts. The IMAX Victoria theater within the Museum shows educational films as well as regular
-            commercial movies. <a href="https://royalbcmuseum.bc.ca/">Visit Website</a></li>
-      </div>
 
       <!-- begin second column-->
       <div class="second-column">
-        <img src="butchart_gardens.jpg" alt="Butchart Gardens, Victoria, British Columbia" id="photos1" onclick="change1();">
-
-        <img src="inner_harbour.jpg" alt="Victoria Inner Harbor, Victoria, British Columbia" id="photos2" onclick="change2();">
+      
 
 
   </section>
@@ -209,59 +163,11 @@
     }
     var tiles = L.tileLayer(basemap_url, basemap_attributes).addTo(map);
     // storing data as variables in arrays-------------------------------------------
-    var sites = ["Butchart Gardens", "Craigdarroch Castle", "Inner Harbour", "Royal BC Museum"],
-      locations = [
-        [48.55916443, -123.46833146],
-        [48.422694, -123.343561],
-        [48.421297, -123.372051],
-        [48.419811, -123.36745]
-      ],
-      addresses = ["800 Benvenuto Avenue, Brentwood Bay, BC  V8M 1J8", "1050 Joan Crescent, Victoria BC  V8S 3L5", "None", "675 Belleville Street, Victoria, BC  V8W 9W2"],
-      phoneNumbers = ["866-652-4422", "250-592-5323", "None", "888-447-7977"],
-      websites = ["https://www.butchartgardens.com/", "https://thecastle.ca/", "https://www.tourismvictoria.com/see-do/activities-attractions/statues-landmarks/inner-harbour",
-        "https://royalbcmuseum.bc.ca/"
-      ],
-      children = [true, false, false, false];
-    // looping through arrays-------------------------------------------------------
-    for (var i = 0; i < sites.length; i++) {
-      var sitePopup = "<b>" + sites[i] + "</b>" + "<br>" + "<b>Address:</b>" + " " + addresses[i] + "<br>" + "<b>Phone Number:</b>" + " " +
-        phoneNumbers[i] + "<br>" + "<b>Website</b>: <a href='" + websites[i] + "'>" + websites[i] + "</a>";
-      // if statement - add to popup string if condition is met
-      if (children[i] === true) {
-        sitePopup += "<br>" + "Child Friendly!"; // concatenate to popup string
-      }
-      // add markers to map, bind string to popups
-      L.marker(locations[i])
-        .addTo(map)
-        .bindPopup(sitePopup);
-    }
+
     // end of for loop
     // You'll need to create an id for your photograph
     // You'll need to create an id for your photograph
-    var click_photo1 = document.getElementById('photos1')
-    // Select an amusing photo to swap out
-    var image_tracker1 = 'b';
-    function change1() {
-      var image = document.getElementById("photos1");
-      if (image_tracker1 === 'b') {
-        image.src = "craigdarroch_castle.jpg";
-        image_tracker1 = "c";
-      } else {
-        image.src = "butchart_gardens.jpg";
-        image_tracker1 = 'b';
-      }
-    }
-    var image_tracker2 = 'i';
-    function change2() {
-      var image = document.getElementById("photos2");
-      if (image_tracker2 === 'i') {
-        image.src = "royal_bc_museum.jpg";
-        image_tracker2 = "r";
-      } else {
-        image.src = "inner_harbour.jpg";
-        image_tracker2 = 'i';
-      }
-    }
+
   </script>
 
 </body>
