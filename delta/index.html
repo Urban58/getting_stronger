@@ -172,8 +172,34 @@
     // end of for loop
     // You'll need to create an id for your photograph
     // You'll need to create an id for your photograph
+var places = [{
+  name: "Scribner Bend Vineyards",
+  properties: {
+      description: "A premier destination for weddings, parties, events and meetings.",
+      coordinates: [38.431020, -121.525670],
+      url: 'https://www.scribnerbend.com/',
+      Phone: '(916) 744-1803'
+  }
+}];
+console.log(places[0]);
+
+var i = 0;
+var props = places[i].properties;
+
+
+var popup = "<h3>" + places[i].name + "</h3>" + "<p>" + props.description + "</p>";
+var marker = L.marker(props.coordinates, {
+  })
+.addTo(map)
+.bindPopup(popup);
+
+marker.on("mouseover", function() {
+  this.openPopup();
+});
 
   </script>
+
+
 
 </body>
 
