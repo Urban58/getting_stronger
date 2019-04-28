@@ -39,9 +39,9 @@
       color: white;
     }
     h3 {
-      font-size: 1.5em;
+      font-size: 1.2em;
       font-weight: 400;
-      letter-spacing: .04em;
+      letter-spacing: .03em;
       font-family: 'Libre Baskerville', Serif;
     }
     p {
@@ -175,28 +175,46 @@
 var places = [{
   name: "Scribner Bend Vineyards",
   properties: {
-      description: "A premier destination for weddings, parties, events and meetings.",
+      description: "Long established winery with wine tasting room and is also a premier destination for weddings, parties, events and meetings.",
       coordinates: [38.431020, -121.525670],
       url: 'https://www.scribnerbend.com/',
-      Phone: '(916) 744-1803'
+      phone: '(916) 744-1803'
   }
+},
+{
+  name: "Giusti's Place",
+  properties: {
+    description: "The most well-known restaurant in the Sacramento River Delte, the food lives up to the restaurant's reputation.",
+    coordinates: [38.231290, -121.513180],
+    url: 'https://www.giustis.com/',
+    phone: '(916) 776-1808'
+  }
+},
+{name: "Bogle Vineyards and Winery",
+properties: {
+  description: "Quaint wine tasting room off the beaten path and nestled among the vineyards.",
+  coordinates: [38.388470, -121.535800],
+  url: 'https://boglewinery.com/',
+  phone: '(916) 744-1092'
+}
 }];
+
+
+for (var i = 0; i < places.length; i++){
+  var props = places[i].properties;
+
+  var popup = "<h3>" + places[i].name + "</h3>" + "<p>" + props.description + "</p>";
+  var marker = L.marker(props.coordinates, {
+    })
+  .addTo(map)
+  .bindPopup(popup);
+
+  marker.on("mouseover", function() {
+    this.openPopup();
+  });
+
+};
 console.log(places[0]);
-
-var i = 0;
-var props = places[i].properties;
-
-
-var popup = "<h3>" + places[i].name + "</h3>" + "<p>" + props.description + "</p>";
-var marker = L.marker(props.coordinates, {
-  })
-.addTo(map)
-.bindPopup(popup);
-
-marker.on("mouseover", function() {
-  this.openPopup();
-});
-
   </script>
 
 
