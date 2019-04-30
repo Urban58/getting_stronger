@@ -44,6 +44,20 @@
       letter-spacing: .03em;
       font-family: 'Libre Baskerville', Serif;
     }
+
+    .leaflet-popup-content h3 {
+      font-family: 'Libre Baskerville', Serif;
+      font-size: 1.2em;
+      margin-bottom: 6px;
+    }
+    .leaflet-popup-content p {
+      margin: 3px 0 6px;
+      font-size: 1.1em;
+    }
+    .leaflet-popup-content a {
+      font-weight: normal;
+    }
+
     p {
       font-family: 'Nunito', Sans-Serif;
       font-size: 1.1em;
@@ -122,7 +136,7 @@
 <body>
 
   <header>
-    <h1>Visitng the Sacramento River Delta</h1>
+    <h1>Visiting the Sacramento River Delta</h1>
   </header>
 
   <section>
@@ -203,7 +217,9 @@ properties: {
 for (var i = 0; i < places.length; i++){
   var props = places[i].properties;
 
-  var popup = "<h3>" + places[i].name + "</h3>" + "<p>" + props.description + "</p>";
+  var popup = "<h3>" + places[i].name + "</h3>" + "<p>" + props.description + "</p>" + "<p><b>Phone:</b>" + " " + props.phone +
+  "<p><b>Website:</b> <a href='" +  props.url + "'>" + props.url + "</a></p>";
+
   var marker = L.marker(props.coordinates, {
     })
   .addTo(map)
