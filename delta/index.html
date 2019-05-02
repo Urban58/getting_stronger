@@ -192,7 +192,8 @@ var places = [{
       description: "Long established winery with wine tasting room and is also a premier destination for weddings, parties, events and meetings.",
       coordinates: [38.431020, -121.525670],
       url: 'https://www.scribnerbend.com/',
-      phone: '(916) 744-1803'
+      phone: '(916) 744-1803',
+      icon: 'restaurant-15.svg'
   }
 },
 {
@@ -201,7 +202,8 @@ var places = [{
     description: "The most well-known restaurant in the Sacramento River Delte, the food lives up to the restaurant's reputation.",
     coordinates: [38.231290, -121.513180],
     url: 'https://www.giustis.com/',
-    phone: '(916) 776-1808'
+    phone: '(916) 776-1808',
+    icon: 'restaurant-15.svg'
   }
 },
 {name: "Bogle Vineyards and Winery",
@@ -209,7 +211,8 @@ properties: {
   description: "Quaint wine tasting room off the beaten path and nestled among the vineyards.",
   coordinates: [38.388470, -121.535800],
   url: 'https://boglewinery.com/',
-  phone: '(916) 744-1092'
+  phone: '(916) 744-1092',
+  icon: 'restaurant-15.svg'
 }
 }];
 
@@ -220,7 +223,15 @@ for (var i = 0; i < places.length; i++){
   var popup = "<h3>" + places[i].name + "</h3>" + "<p>" + props.description + "</p>" + "<p><b>Phone:</b>" + " " + props.phone +
   "<p><b>Website:</b> <a href='" +  props.url + "'>" + props.url + "</a></p>";
 
+  var icon = L.icon({
+    iconUrl: props.icon,
+    iconSize: [30,30],
+    popupAnchor: [0,-22],
+    className: "icon",
+    });
+
   var marker = L.marker(props.coordinates, {
+    icon: icon
     })
   .addTo(map)
   .bindPopup(popup);
@@ -228,6 +239,10 @@ for (var i = 0; i < places.length; i++){
   marker.on("mouseover", function() {
     this.openPopup();
   });
+  marker.on("mouseout", function() {
+    this.closePopup();
+  });
+
 
 };
 console.log(places[0]);
